@@ -1,0 +1,18 @@
+quest alternativ_drop begin
+	state start begin
+		when kill with not npc.is_pc() begin
+			-- [[ Hier Items eintragen ]] --
+			local data {
+			-- vnum   count    chance
+				{19,	1,		50},
+			}
+			
+			for _,v in pairs(data) do
+				if math.random(1, 100) <= v[3] then
+					game.drop_item_with_ownership(v[1], v[2])
+				end
+			end
+			
+		end
+	end
+end
